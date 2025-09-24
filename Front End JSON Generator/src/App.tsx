@@ -129,6 +129,23 @@ function App() {
 
   const getSuffixOptions = () => ['st', 'nd', 'rd', 'th'];
 
+  const updateGSlides = async () => {
+  try {
+    const response = await fetch(import.meta.env.VITE_PY_BACKEND_URL + '/update-slides', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(generateJSON()),
+    });
+
+    if (!response.ok) throw new Error('Failed to update Google Slides');
+
+    const data = await response.json();
+    alert(`✅ Google Slides updated: ${data.message}`);
+  } catch (err: any) {
+    console.error(err);
+    alert(`❌ Error updating Google Slides: ${err.message}`);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-amber-900 to-red-900 py-8 px-4">
@@ -360,6 +377,15 @@ function App() {
                 >
                   <Download className="w-5 h-5" />
                   Download JSON File
+                </button>
+              </div>
+              <div className="mt-4">
+                <button
+                  onClick={updateGSlides}
+                  className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 to-blue-700 text-white px-6 py-4 rounded-lg hover:from-green-700 hover:to-blue-800 transition-all duration-200 text-lg font-medium shadow-lg hover:shadow-green-500/25"
+                >
+                  <Download className="w-5 h-5" />
+                  Update Google Slides
                 </button>
               </div>
             </div>

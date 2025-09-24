@@ -211,7 +211,7 @@ function App() {
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    BN Offering (Name only)
+                    BN Family (Name only)
                   </label>
                   <input
                     type="text"
@@ -224,7 +224,7 @@ function App() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    MN Offering (Name only)
+                    MN Family (Name only)
                   </label>
                   <input
                     type="text"
@@ -237,7 +237,7 @@ function App() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    PN Offering (Name only)
+                    PN Family (Name only)
                   </label>
                   <input
                     type="text"
@@ -259,7 +259,7 @@ function App() {
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    BN SundayS
+                    BN Teachers
                   </label>
                   <input
                     type="text"
@@ -272,7 +272,7 @@ function App() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    MN SundayS
+                    MN Teachers
                   </label>
                   <input
                     type="text"

@@ -42,7 +42,7 @@ Church Songs JSON Generator is a web-based tool designed to help church teams qu
 - Click Download JSON to save, or Update Slides to push changes to Google Slides (requires backend).
 
 ## Screenshots
-<img src="Front%20End%20JSON%20Generator/assets/Teachers.png" alt="Screenshot" width="650"/>
-<img src="Front%20End%20JSON%20Generator/assets/Json.png" alt="Screenshot" width="650"/>
+<img src="Front%20End%20JSON%20Generator/assets/Teachers.png" alt="Screenshot" width="900"/>
+<img src="Front%20End%20JSON%20Generator/assets/Json.png" alt="Screenshot" width="350"/>
 <img src="Front%20End%20JSON%20Generator/assets/Songs.png" alt="Screenshot" width="650"/>
 

@@ -31,13 +31,11 @@ function App() {
   const [songs, setSongs] = useState<Song[]>([]);
   const [showPreview, setShowPreview] = useState(false);
   const [nextSongId, setNextSongId] = useState(1);
+  const scriptUrl = import.meta.env.VITE_SCRIPT_URL;
 
   // ✅ Fetch songs from Apps Script Web App on load
   useEffect(() => {
-    const backendUrl = process.env.REACT_APP_BACKEND_URL; // safely from env
-    if (!backendUrl) return;
-    
-    fetch(`${backendUrl}/api/fetch-songs`)
+    fetch(scriptUrl)
       .then(res => res.json())
       .then((data: any[]) => {
         const songsFromSheet: Song[] = data.map((row, idx) => ({
@@ -50,6 +48,24 @@ function App() {
       })
       .catch(err => console.error("❌ Error fetching songs:", err));
   }, []);
+
+  // useEffect(() => {
+  //   const backendUrl = process.env.REACT_APP_BACKEND_URL; // safely from env
+  //   if (!backendUrl) return;
+    
+  //   fetch(`${backendUrl}/api/fetch-songs`)
+  //     .then(res => res.json())
+  //     .then((data: any[]) => {
+  //       const songsFromSheet: Song[] = data.map((row, idx) => ({
+  //         id: idx + 1,
+  //         main: row.lyrics || '',
+  //         eng: row.english || ''
+  //       }));
+  //       setSongs(songsFromSheet);
+  //       setNextSongId(songsFromSheet.length + 1);
+  //     })
+  //     .catch(err => console.error("❌ Error fetching songs:", err));
+  // }, []);
 
   const handleWeekDataChange = (field: keyof WeekData, value: string | number) => {
     setWeekData(prev => ({

@@ -1,6 +1,6 @@
 # Church Songs JSON Generator
 
-![Description of screenshot](Front End JSON Generator/assets/Initial.png)
+![Description of screenshot](Front%20End%20JSON%20Generator/assets/Initial.png)
 Church Songs JSON Generator is a web-based tool designed to help church teams quickly generate structured JSON files for automating Google Slides presentations. It allows you to input weekly information, family special songs, and songs (with lyrics in multiple languages), preview the JSON structure, and directly download it for integration with your slides workflow.
 
 # Features

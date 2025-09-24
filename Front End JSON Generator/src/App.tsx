@@ -202,7 +202,7 @@ function App() {
             {/* Offerings */}
             <div className="bg-gray-800/60 backdrop-blur-sm border border-amber-700/30 rounded-xl shadow-2xl shadow-amber-900/20 p-6">
               <h2 className="text-2xl font-semibold text-white mb-6 flex items-center gap-2">
-                🎁 Offerings
+                🎁 Offerings Time Song Families
               </h2>
               <p className="text-sm text-amber-300 mb-4 bg-amber-900/20 border border-amber-700/30 rounded-lg p-3">
                 💡 Note: " & Family" will be automatically added to each offering name in the JSON output

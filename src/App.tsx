@@ -19,8 +19,8 @@ interface WeekData {
 
 function App() {
   const [weekData, setWeekData] = useState<WeekData>({
-    week_number: 1,
-    week_suffix: 'st',
+    week_number: 4,
+    week_suffix: 'th',
     BN_offering: '',
     MN_offering: '',
     PN_offering: '',
@@ -32,6 +32,19 @@ function App() {
   const [showPreview, setShowPreview] = useState(false);
   const [nextSongId, setNextSongId] = useState(1);
   const scriptUrl = import.meta.env.VITE_SCRIPT_URL;
+  const bnTeachers = [
+    'Anusha & Kevin',
+    'Priya & Ebinezar',
+    'Priyanka',
+    'Other'   // sentinel option to allow typing custom value
+  ];
+
+  const mnTeachers = [
+    'Mishal',
+    'John Peter',
+    'John Lara',
+    'Other'
+  ];
 
   // ✅ Fetch songs from Apps Script Web App on load
   useEffect(() => {
@@ -66,6 +79,10 @@ function App() {
   //     })
   //     .catch(err => console.error("❌ Error fetching songs:", err));
   // }, []);
+
+  const selectValueFor = (value: string, list: string[]) => {
+    return list.includes(value) ? value : 'Other';
+  };
 
   const handleWeekDataChange = (field: keyof WeekData, value: string | number) => {
     setWeekData(prev => ({
@@ -261,26 +278,74 @@ function App() {
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     BN SundayS
                   </label>
-                  <input
-                    type="text"
-                    value={weekData.BN_SundayS}
-                    onChange={(e) => handleWeekDataChange('BN_SundayS', e.target.value)}
-                    className="w-full px-4 py-3 bg-gray-700/60 border border-amber-600/50 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200"
-                    placeholder="Anu & Kev"
-                  />
+
+                  <select
+                    value={selectValueFor(weekData.BN_SundayS, bnTeachers)}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (val === 'Other') {
+                        // set to empty so the text input shows and can be typed into
+                        handleWeekDataChange('BN_SundayS', '');
+                      } else {
+                        handleWeekDataChange('BN_SundayS', val);
+                      }
+                    }}
+                    className="w-full px-4 py-3 bg-gray-700/60 border border-amber-600/50 rounded-lg text-white focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200"
+                  >
+                    <option value="">— Select —</option>
+                    {bnTeachers.map((t) => (
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
+                    ))}
+                  </select>
+                  
+                  {/* show text input when value is custom or blank (i.e., Other selected) */}
+                  {(!bnTeachers.includes(weekData.BN_SundayS) || weekData.BN_SundayS === '') && (
+                    <input
+                      type="text"
+                      placeholder="Enter custom BN Sunday teacher..."
+                      value={weekData.BN_SundayS}
+                      onChange={(e) => handleWeekDataChange('BN_SundayS', e.target.value)}
+                      className="w-full mt-2 px-4 py-3 bg-gray-700/60 border border-amber-600/50 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200"
+                    />
+                  )}
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     MN SundayS
                   </label>
-                  <input
-                    type="text"
-                    value={weekData.MN_SundayS}
-                    onChange={(e) => handleWeekDataChange('MN_SundayS', e.target.value)}
-                    className="w-full px-4 py-3 bg-gray-700/60 border border-amber-600/50 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200"
-                    placeholder="Mish & Jon"
-                  />
+
+                  <select
+                    value={selectValueFor(weekData.MN_SundayS, mnTeachers)}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (val === 'Other') {
+                        handleWeekDataChange('MN_SundayS', '');
+                      } else {
+                        handleWeekDataChange('MN_SundayS', val);
+                      }
+                    }}
+                    className="w-full px-4 py-3 bg-gray-700/60 border border-amber-600/50 rounded-lg text-white focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200"
+                  >
+                    <option value="">— Select —</option>
+                    {mnTeachers.map((t) => (
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
+                    ))}
+                  </select>
+                  
+                  {(!mnTeachers.includes(weekData.MN_SundayS) || weekData.MN_SundayS === '') && (
+                    <input
+                      type="text"
+                      placeholder="Enter custom MN Sunday teacher..."
+                      value={weekData.MN_SundayS}
+                      onChange={(e) => handleWeekDataChange('MN_SundayS', e.target.value)}
+                      className="w-full mt-2 px-4 py-3 bg-gray-700/60 border border-amber-600/50 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200"
+                    />
+                  )}
                 </div>
               </div>
             </div>

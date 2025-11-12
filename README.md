@@ -46,3 +46,7 @@ Church Songs JSON Generator is a web-based tool designed to help church teams qu
 <img src="Front%20End%20JSON%20Generator/assets/Json.png" alt="Screenshot" width="300"/>
 <img src="Front%20End%20JSON%20Generator/assets/Songs.png" alt="Screenshot" width="300"/>
 
+
+### 🎨 Icon Credit
+[Chorus icons created by gravisio - Flaticon](https://www.flaticon.com/free-icons/chorus)
+

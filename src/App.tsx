@@ -174,6 +174,7 @@ const triggerSheetUpdate = async () => {
     });
 
     alert("✅ Sheet updated. Reloading data…");
+    window.location.reload();
   } catch (err) {
     alert("❌ Failed to trigger update");
   }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Trash2, Download, Eye, EyeOff, Music } from 'lucide-react';
+import { Plus, Trash2, Download, Eye, EyeOff, Music, RefreshCw, Upload } from 'lucide-react';
 
 interface Song {
   id: number;

@@ -164,6 +164,21 @@ function App() {
   }
 };
 
+const triggerSheetUpdate = async () => {
+  try {
+    await fetch(import.meta.env.VITE_SCRIPT_URL, {
+      method: "POST",
+      body: new URLSearchParams({
+        token: import.meta.env.VITE_SCRIPT_SECRET
+      })
+    });
+
+    alert("✅ Sheet updated. Reloading data…");
+  } catch (err) {
+    alert("❌ Failed to trigger update");
+  }
+};
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-amber-900 to-red-900 py-8 px-4">
       <div className="max-w-6xl mx-auto">
@@ -451,6 +466,15 @@ function App() {
                 >
                   <Download className="w-5 h-5" />
                   Update Google Slides
+                </button>
+              </div>
+              <div className="mt-4">
+                <button
+                  onClick={triggerSheetUpdate}
+                  className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 to-blue-700 text-white px-6 py-4 rounded-lg hover:from-green-700 hover:to-blue-800 transition-all duration-200 text-lg font-medium shadow-lg hover:shadow-green-500/25"
+                >
+                  <Download className="w-5 h-5" />
+                  🔄 Sync Songs from Sheet
                 </button>
               </div>
             </div>
